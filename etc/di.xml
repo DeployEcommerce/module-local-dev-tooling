@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Deploy Ecommerce. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Area routing runs before the adminhtml area loads, so the admin path override must be global. -->
+    <type name="Magento\Backend\App\Area\FrontNameResolver">
+        <plugin name="deployecommerce_local_dev_tooling_force_admin_path"
+                type="DeployEcommerce\LocalDevTooling\Plugin\ForceAdminPathPlugin"/>
+    </type>
+    <!-- Absent before Magento 2.4.5; a plugin on a missing class is never applied. -->
+    <type name="Magento\AdminAdobeIms\Service\ImsConfig">
+        <plugin name="deployecommerce_local_dev_tooling_disable_adobe_ims"
+                type="DeployEcommerce\LocalDevTooling\Plugin\DisableAdobeImsPlugin"/>
+    </type>
+</config>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Deploy Ecommerce. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Must run before core adminAuthentication (sortOrder 100) so the user is signed in when it checks. -->
+    <type name="Magento\Backend\App\AbstractAction">
+        <plugin name="deployecommerce_local_dev_tooling_auto_login"
+                type="DeployEcommerce\LocalDevTooling\Plugin\AutoLoginPlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\TwoFactorAuth\Observer\ControllerActionPredispatch">
+        <plugin name="deployecommerce_local_dev_tooling_skip_two_factor_auth"
+                type="DeployEcommerce\LocalDevTooling\Plugin\SkipTwoFactorAuthPlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Backend\Model\Url">
+        <plugin name="deployecommerce_local_dev_tooling_admin_url_host"
+                type="DeployEcommerce\LocalDevTooling\Plugin\AdminUrlHostPlugin"/>
+    </type>
+</config>

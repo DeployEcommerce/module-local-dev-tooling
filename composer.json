@@ -1,0 +1,22 @@
+{
+    "name": "deployecommerce/module-local-dev-tooling",
+    "description": "Local development tooling for Magento 2: admin auto-login, 2FA bypass and a fixed /admin/ path on local hostnames. Dev dependency only.",
+    "type": "composer-plugin",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.1",
+        "composer-plugin-api": "^2.0",
+        "magento/framework": ">=103.0.4"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "DeployEcommerce\\LocalDevTooling\\": ""
+        }
+    },
+    "extra": {
+        "class": "DeployEcommerce\\LocalDevTooling\\Composer\\DevDependencyGuard"
+    }
+}
